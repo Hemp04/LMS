@@ -42,6 +42,6 @@ class MainTest {
         lms.addBook(book1);
         assertThrows(IllegalArgumentException.class, () -> {
             lms.addBook(book2);
-        });
+        }, "Adding a book with duplicate ISBN should thrown an IllegalArgumentException");
     }
 }
