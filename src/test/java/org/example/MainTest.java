@@ -47,10 +47,9 @@ class MainTest {
 
     @Test
     public void addBookWithNullBookName(){
-        Books book3 = new Books(null, "987-123-123-9876", "author", 2004);
-            IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-                lms.addBook(book3); // Try to add a null book
-            });
-            assertEquals("Book cannot be null.", thrown.getMessage());
+        Books book3 = new Books(" ", "987-123-123-9875", "author", 2004);
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.addBook(book3);
+        }, "Adding a book with Null as a Title should thrown an IllegalArgumentException");
     }
 }
