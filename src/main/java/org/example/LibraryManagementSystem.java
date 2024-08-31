@@ -22,5 +22,14 @@ public class LibraryManagementSystem {
                             + "ISBN: " + book.getISBN() + "\n");
         }
     }
+    public void addBook(Books book) throws IllegalArgumentException {
+        for (Books availableBook : availableBooks) {
+            if (availableBook.getISBN().equals(book.getISBN())) {
+                throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
+            }
+        }
+        availableBooks.add(book);
+        System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
+    }
     }
 
