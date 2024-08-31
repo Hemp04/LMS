@@ -27,11 +27,21 @@ class MainTest {
         // number of books before adding
         int noOfBooks = availableBooks.size();
         lms.addBook(books);
+        assertEquals(noOfBooks + 1, availableBooks.size());
+        assertTrue(availableBooks.contains(books));
     }
     @Test
     public void viewAvailableBooksTest(){
         lms.viewAvailableBooks();
-
     }
+    @Test
+    public void addBookWithDuplicateISBNTest(){
+        Books book1 = new Books("title", "987-123-123-9876", "author", 2004);
+        Books book2 = new Books("title", "987-123-123-9876", "author", 2004);
 
+        lms.addBook(book1);
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.addBook(book2);
+        });
+    }
 }
