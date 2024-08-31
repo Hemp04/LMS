@@ -28,5 +28,9 @@ class MainTest {
         int noOfBooks = availableBooks.size();
         lms.addBook(books);
     }
+    @Test
+    public void viewAvailableBooksTest(){
+        lms.viewAvailableBooks();
+    }
 
 }
