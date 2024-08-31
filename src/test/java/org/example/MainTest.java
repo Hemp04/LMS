@@ -44,4 +44,13 @@ class MainTest {
             lms.addBook(book2);
         }, "Adding a book with duplicate ISBN should thrown an IllegalArgumentException");
     }
+
+    @Test
+    public void addBookWithNullBookName(){
+        Books book3 = new Books(null, "987-123-123-9876", "author", 2004);
+            IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+                lms.addBook(book3); // Try to add a null book
+            });
+            assertEquals("Book cannot be null.", thrown.getMessage());
+    }
 }
