@@ -31,6 +31,7 @@ class MainTest {
     @Test
     public void viewAvailableBooksTest(){
         lms.viewAvailableBooks();
+
     }
 
 }
