@@ -94,14 +94,14 @@ class MainTest {
 
     @Test
     public void borrowAvailableBookTest() {
-        Books book = new Books("title", "987-123-123-9876", "author", 2004);
+        Books book = new Books("title", "987-123-123-9879", "author", 2004);
         // Add a single books
         lms.addBook(book);
         // available books before borrowing
         int noOfAvailableBooks = availableBooks.size();
         // borrowed books before borrowing
         int noOfBorrowedBooks = borrowedBooks.size();
-        lms.borrowBook("987-123-123-9876");
+        lms.borrowBook("987-123-123-9879");
         assertEquals(noOfAvailableBooks - 1, availableBooks.size());
         assertEquals(noOfBorrowedBooks + 1, borrowedBooks.size());
         assertTrue(borrowedBooks.contains(book));

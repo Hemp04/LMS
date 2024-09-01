@@ -5,6 +5,7 @@ import org.example.model.Books;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class LibraryManagementSystem {
@@ -60,7 +61,19 @@ public class LibraryManagementSystem {
         availableBooks.add(book);
         System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
-
+    public void borrowBook(String ISBN){
+        // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
+        Iterator<Books> iterator = availableBooks.iterator();
+        while (iterator.hasNext()) {
+            Books book = iterator.next();
+            if (book.getISBN().equals(ISBN)) {
+                iterator.remove();
+                borrowedBooks.add(book);
+                System.out.println("Book with ISBN " + ISBN + " borrowed Successfully!");
+                return;
+            }
+        }
+    }
 
     }
 
