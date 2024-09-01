@@ -5,7 +5,7 @@ This is a simple library management system entirely implemented using a Test Dri
 
 ## Table of Contents
 
-- [What is TDD?](#What-is-TDD)
+- [What is TDD?](#what-is-tdd)
 - [How to Setup the Project?](#how-to-setup-the-project)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -15,7 +15,7 @@ This is a simple library management system entirely implemented using a Test Dri
 - [Built with](#built-with)
 - [Authors](#authors)
 
-## What is TDD ?
+## What is TDD
 
 Test-Driven Development (TDD) is a software development approach in which tests are written before the actual code is implemented. The process follows a cyclical pattern known as Red-Green-Refactor:
 
