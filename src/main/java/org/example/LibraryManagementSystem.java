@@ -32,6 +32,9 @@ public class LibraryManagementSystem {
         if (book.getAuthor() == null || book.getAuthor().trim().isEmpty()) {
             throw new IllegalArgumentException("Book Author cannot be null or blank.");
         }
+        if (book.getISBN() == null || book.getISBN().trim().isEmpty()) {
+            throw new IllegalArgumentException("Book ISBN No. cannot be null or blank.");
+        }
         for (Books availableBook : availableBooks) {
             if (availableBook.getISBN().equals(book.getISBN())) {
                 throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
