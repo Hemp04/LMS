@@ -84,4 +84,12 @@ class MainTest {
             lms.addBook(book6);
         }, "Adding a book with Invalid ISBN No. should thrown an IllegalArgumentException");
     }
+    @Test
+    public void viewAvailableBooksEmptyLibrary(){
+//        lms.viewAvailableBooks();
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.viewAvailableBooks();
+        }, "Empty Library can be displayed that should thrown an IllegalArgumentException");
+    }
+
 }
