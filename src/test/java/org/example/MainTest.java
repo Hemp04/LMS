@@ -116,4 +116,21 @@ class MainTest {
         assertThrows(IllegalArgumentException.class, () -> lms.borrowBook("654-321-321-3212"),
                 "Trying to borrow an unavailable book should thrown an IllegalArgumentException");
     }
+    @Test
+    public void returnBorrowedBookTest() {
+        Books book = new Books("title", "987-123-123-0000", "author", 2010);
+        // Add a single books
+        lms.addBook(book);
+        // borrow that book
+        lms.borrowBook("987-123-521-8800");
+        // available books before returning
+        int noOfAvailableBooks = availableBooks.size();
+        // borrowed books before returning
+        int noOfBorrowedBooks = borrowedBooks.size();
+        lms.returnBook("987-123-123-0000");
+        assertEquals(noOfAvailableBooks + 1, availableBooks.size());
+        assertEquals(noOfBorrowedBooks - 1, borrowedBooks.size());
+        assertTrue(availableBooks.contains(book));
+        assertFalse(borrowedBooks.contains(book));
+    }
 }
