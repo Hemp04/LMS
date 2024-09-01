@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     LibraryManagementSystem lms;
@@ -67,5 +67,13 @@ class MainTest {
         assertThrows(IllegalArgumentException.class, () -> {
             lms.addBook(book5);
         }, "Adding a book with Null as a ISBN should thrown an IllegalArgumentException");
+    }
+
+    @Test
+    public void addBookWithProperPubYearTest(){
+        Books book6 = new Books("title", "987-123-123-9879", "author", 2044);
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.addBook(book6);
+        }, "Adding a book with Wrong or Future Publication Year should thrown an IllegalArgumentException");
     }
 }
