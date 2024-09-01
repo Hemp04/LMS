@@ -76,4 +76,12 @@ class MainTest {
             lms.addBook(book6);
         }, "Adding a book with Wrong or Future Publication Year should thrown an IllegalArgumentException");
     }
+
+    @Test
+    public void addBookWith_Improper_ISBN_Test(){
+        Books book6 = new Books("title", "987-123-123-98798752", "author", 2014);
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.addBook(book6);
+        }, "Adding a book with Invalid ISBN No. should thrown an IllegalArgumentException");
+    }
 }

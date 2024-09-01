@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.model.Books;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +36,10 @@ public class LibraryManagementSystem {
         if (book.getISBN() == null || book.getISBN().trim().isEmpty()) {
             throw new IllegalArgumentException("Book ISBN No. cannot be null or blank.");
         }
-        if (book.getPublicationYear() >= 2024 || book.getPublicationYear() <= 1800) {
-            throw new IllegalArgumentException("The year " + book.getPublicationYear() + " is out of the range of  1800 to 2024 .");
+        if (book.getPublicationYear() >= LocalDate.now().getYear() || book.getPublicationYear() <= 1800) {
+            throw new IllegalArgumentException("The year " + book.getPublicationYear() + " is out of the range of  1800 to "+LocalDate.now().getYear()+".");
         }
+
         for (Books availableBook : availableBooks) {
             if (availableBook.getISBN().equals(book.getISBN())) {
                 throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
