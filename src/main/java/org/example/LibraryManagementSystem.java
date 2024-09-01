@@ -35,26 +35,9 @@ public class LibraryManagementSystem {
         }
     }
     public void addBook(Books book) throws IllegalArgumentException {
-        if (book == null) {
-            throw new IllegalArgumentException("Book cannot be null.");
-        }
 
-        if (book.getISBN() == null || book.getISBN().trim().isEmpty()) {
-            throw new IllegalArgumentException("Book ISBN No. cannot be null or blank.");
-        }
-        if (book.getPublicationYear() >= LocalDate.now().getYear() || book.getPublicationYear() <= 1800) {
-            throw new IllegalArgumentException("The year " + book.getPublicationYear() + " is out of the range of  1800 to "+LocalDate.now().getYear()+".");
-        }
-        if (book.getISBN().length() != 16 ) {
-            throw new IllegalArgumentException("Book ISBN No. Invalid ");
-        }
 
-        for (Books availableBook : availableBooks) {
-            if (availableBook.getISBN().equals(book.getISBN())) {
-                throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
-            }
-        }
-        if(validateAuthor(book.getAuthor()) && validateTitle(book.getTitle())){
+        if(validateAuthor(book.getAuthor()) && validateTitle(book.getTitle()) && validateISBN(book.getISBN()) && validatePUB_Year(book.getPublicationYear())){
             availableBooks.add(book);
             System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
         }
@@ -101,6 +84,25 @@ public class LibraryManagementSystem {
         }
         return true;
     }
-
+    private boolean validateISBN(String ISBN) throws IllegalArgumentException {
+        if (ISBN == null || ISBN.trim().isEmpty() ) {
+            throw new IllegalArgumentException("Book ISBN No. cannot be null or blank.");
+        }
+        if(ISBN.length()!=16){
+            throw new IllegalArgumentException("Book ISBN No. Invalid ");
+        }
+        for (Books availableBook : availableBooks) {
+            if (availableBook.getISBN().equals(ISBN)) {
+                throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN no. " + ISBN);
+            }
+        }
+        return true;
+    }
+    private boolean validatePUB_Year(int PUB_Year) throws IllegalArgumentException {
+        if (PUB_Year >= LocalDate.now().getYear() || PUB_Year <= 1800) {
+            throw new IllegalArgumentException("The year " + PUB_Year + " is out of the range of  1800 to "+LocalDate.now().getYear()+".");
+        }
+        return true;
+    }
     }
 
