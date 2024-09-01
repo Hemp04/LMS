@@ -23,7 +23,7 @@ class MainTest {
 
     @Test
     public void addBookTest() {
-        Books books = new Books("title", "987-123-123-9876", "author", 2004);
+        Books books = new Books("title", "987-123-123-9870", "author", 2004);
         // number of books before adding
         int noOfBooks = availableBooks.size();
         lms.addBook(books);
@@ -36,8 +36,8 @@ class MainTest {
     }
     @Test
     public void addBookWithDuplicateISBNTest(){
-        Books book1 = new Books("title", "987-123-123-9876", "author", 2004);
-        Books book2 = new Books("title", "987-123-123-9876", "author", 2004);
+        Books book1 = new Books("title", "987-123-123-9887", "author", 2004);
+        Books book2 = new Books("title", "987-123-123-9887", "author", 2004);
 
         lms.addBook(book1);
         assertThrows(IllegalArgumentException.class, () -> {

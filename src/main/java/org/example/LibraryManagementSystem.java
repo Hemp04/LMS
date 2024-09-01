@@ -4,11 +4,19 @@ import org.example.model.Books;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LibraryManagementSystem {
     private static final List<Books> availableBooks = new ArrayList<>();
     private static final List<Books> borrowedBooks = new ArrayList<>();
+
+    public static List<Books> get_Available_Books() {
+        return Collections.unmodifiableList(availableBooks);
+    }
+    public static List<Books> get_Borrowed_Books() {
+        return Collections.unmodifiableList(borrowedBooks);
+    }
 
     public void viewAvailableBooks() {
         if (availableBooks.isEmpty()) {
