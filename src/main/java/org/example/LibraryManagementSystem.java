@@ -39,7 +39,9 @@ public class LibraryManagementSystem {
         if (book.getPublicationYear() >= LocalDate.now().getYear() || book.getPublicationYear() <= 1800) {
             throw new IllegalArgumentException("The year " + book.getPublicationYear() + " is out of the range of  1800 to "+LocalDate.now().getYear()+".");
         }
-
+        if (book.getISBN().length() != 16 ) {
+            throw new IllegalArgumentException("Book ISBN No. Invalid ");
+        }
         for (Books availableBook : availableBooks) {
             if (availableBook.getISBN().equals(book.getISBN())) {
                 throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
