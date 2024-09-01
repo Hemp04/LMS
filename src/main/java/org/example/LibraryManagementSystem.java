@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryManagementSystem {
-    public static final List<Books> availableBooks = new ArrayList<>();
-    public static final List<Books> borrowedBooks = new ArrayList<>();
+    private static final List<Books> availableBooks = new ArrayList<>();
+    private static final List<Books> borrowedBooks = new ArrayList<>();
+
     public void viewAvailableBooks() {
         if (availableBooks.isEmpty()) {
 

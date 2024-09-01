@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     LibraryManagementSystem lms;
-    public static final List<Books> availableBooks = LibraryManagementSystem.availableBooks;
-    public static final List<Books> borrowedBooks = LibraryManagementSystem.borrowedBooks;
+    public static final List<Books> availableBooks = LibraryManagementSystem.get_Available_Books();
+    public static final List<Books> borrowedBooks = LibraryManagementSystem.get_Borrowed_Books();
 
     @BeforeEach
     public void setUp() {
@@ -86,10 +86,20 @@ class MainTest {
     }
     @Test
     public void viewAvailableBooksEmptyLibrary(){
-//        lms.viewAvailableBooks();
         assertThrows(IllegalArgumentException.class, () -> {
             lms.viewAvailableBooks();
         }, "Empty Library can be displayed that should thrown an IllegalArgumentException");
     }
 
+
+    @Test
+    public void borrowAvailableBookTest() {
+        Books book = new Books("title", "987-123-123-9876", "author", 2004);
+        // Add a single books
+        lms.addBook(book);
+        // available books before borrowing
+        int noOfAvailableBooks = availableBooks.size();
+        // borrowed books before borrowing
+        int noOfBorrowedBooks = borrowedBooks.size();
+    }
 }
