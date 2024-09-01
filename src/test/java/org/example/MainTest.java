@@ -101,5 +101,10 @@ class MainTest {
         int noOfAvailableBooks = availableBooks.size();
         // borrowed books before borrowing
         int noOfBorrowedBooks = borrowedBooks.size();
+        lms.borrowBook("987-123-123-9876");
+        assertEquals(noOfAvailableBooks - 1, availableBooks.size());
+        assertEquals(noOfBorrowedBooks + 1, borrowedBooks.size());
+        assertTrue(borrowedBooks.contains(book));
+        assertFalse(availableBooks.contains(book));
     }
 }
