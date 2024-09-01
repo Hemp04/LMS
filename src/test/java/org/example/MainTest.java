@@ -46,7 +46,7 @@ class MainTest {
     }
 
     @Test
-    public void addBookWithNullBookName(){
+    public void addBookWithNullBookNameTest(){
         Books book3 = new Books(" ", "987-123-123-9875", "author", 2004);
         assertThrows(IllegalArgumentException.class, () -> {
             lms.addBook(book3);
@@ -54,10 +54,18 @@ class MainTest {
     }
 
     @Test
-    public void addBookWithNullAuthorName(){
+    public void addBookWithNullAuthorNameTest(){
         Books book4 = new Books("title", "987-123-123-9873", " ", 2004);
         assertThrows(IllegalArgumentException.class, () -> {
             lms.addBook(book4);
         }, "Adding a book with Null as a AuthorName should thrown an IllegalArgumentException");
+    }
+
+    @Test
+    public void addBookWithNull_ISBN_Test(){
+        Books book5 = new Books("title", " ", "author", 2014);
+        assertThrows(IllegalArgumentException.class, () -> {
+            lms.addBook(book5);
+        }, "Adding a book with Null as a ISBN should thrown an IllegalArgumentException");
     }
 }
